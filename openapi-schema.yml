@@ -1,0 +1,163 @@
+openapi: 3.0.2
+info:
+  title: ''
+  version: ''
+paths:
+  /employee_details/:
+    get:
+      operationId: listEmployees
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Employees'
+          description: ''
+      tags:
+      - employee-details
+    post:
+      operationId: createEmployee
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Employees'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Employees'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Employees'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employees'
+          description: ''
+      tags:
+      - employee-details
+  /employee_details/{id}/:
+    get:
+      operationId: retrieveEmployee
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this employee.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employees'
+          description: ''
+      tags:
+      - employee-details
+    put:
+      operationId: updateEmployee
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this employee.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Employees'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Employees'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Employees'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employees'
+          description: ''
+      tags:
+      - employee-details
+    patch:
+      operationId: partialUpdateEmployee
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this employee.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Employees'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Employees'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Employees'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employees'
+          description: ''
+      tags:
+      - employee-details
+    delete:
+      operationId: destroyEmployee
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this employee.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - employee-details
+components:
+  schemas:
+    Employees:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        eno:
+          type: integer
+        ename:
+          type: string
+          maxLength: 200
+        esalary:
+          type: number
+        eaddr:
+          type: string
+          maxLength: 200
+      required:
+      - eno
+      - ename
+      - esalary
+      - eaddr
